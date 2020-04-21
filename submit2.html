@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+           .active{
+               color:red;
+               font-size:25px;
+           }
+        </style>
+        <script>
+             var  arr=[];
+          function  fnSubmit(){
+            var nameRef=document.getElementById("txtName");
+            var spanRef=document.getElementById("demo");
+             var name=nameRef.value;
+          
+           if(arr.indexOf(name)==-1)
+           {
+               arr.push(name);
+               nameRef.value=' ';
+               console.log(name);
+           }else
+           {
+               document.getElementById("demo").innerHTML='already here';
+           }
+           var list='';
+           arr.forEach(function(v,i){
+               list=list+"<li>"+v+"</li>";
+               
+           } )
+           var ol = "<ol onclick='fnListClick(event)'>"+list+"</ol>"
+                spanRef.innerHTML = ol;
+            }
+            function fnListClick(eve){
+         var targetEle = eve.target;
+         var classlist = targetEle.classList;
+         if(classlist.contains('active')){
+             classlist.remove('active');
+         }else{
+             classlist.add('active');
+         }
+       }
+          
+        </script>
+
+    </head>
+</html>
+<body>
+    <p>
+        <label>Name</label>
+    <input type="text"id="txtName">
+    </p>
+    <p> 
+        <input type="button"value="submit"onclick="fnSubmit()">
+        <span id="demo"></span>
+    </p>
+</body>

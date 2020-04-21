@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            .active{
+                font-size: 20px;
+                color: red;
+                text-decoration: line-through;
+                cursor: pointer;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <input type="text" id="uinput" placeholder ="enter value">
+            <div>
+                <input type="button"  onclick="fnsubmit()" value="submit">
+
+            </div>
+            <p id="demo"></p>
+        </div>
+        <script>
+            var nameRef = document.querySelector('#uinput');
+            var demoRef = document.querySelector('#demo');
+            var array = [];
+            function fnsubmit(){
+                var name = nameRef.value;
+                if(array.indexOf(name)==-1){
+                    array.push(name);
+                    nameRef.value ='';
+                    console.log(name)
+                }else{
+                    document.querySelector('#demo').innerHTML = "Already here";
+
+                    return;
+                }
+                var list = '';
+                array.forEach(function(v,i){
+                    list = list+"<li>"+v+"</li>"  
+                })
+                var ol = "<ol onclick='fnclick(event)'>"+list+"</ol>"
+                demoRef.innerHTML = ol;
+            }
+       function fnclick(data){
+         var targetEle = data.target;
+         var classlist = targetEle.classList;
+         if(classlist.contains('active')){
+             classlist.remove('active');
+         }else{
+             classlist.add('active');
+         }
+       }
+        </script>
+    </body>
+</html>

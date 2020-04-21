@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var colors=['red','green','yellow','orange','blue'];
+            var arr=[];
+            function fnSubmit(){
+               var nameRef=document.getElementById('txtName');
+               var spanRef=document.getElementById('demo');
+               var name=nameRef.value;
+               if(arr.indexOf(name)==-1){
+                   arr.push(name);
+                   nameRef.value=' ';
+                   console.log("name");
+               }
+               else{
+                   document.getElementById('demo').innerHTML="alredy there";
+               }
+            
+            list='';
+            var i=0;
+            arr.forEach(function(v){
+                list=list+"<li style=color:"+colors[i]+">"+v+"</li>"
+                i++;
+                if(i==4)
+                {
+                    i=0;
+                }
+            })
+            var ol="<ol>"+list+"</ol>"
+            spanRef.innerHTML=ol;
+            }
+        </script>
+    </head>
+    <body>
+        <p>
+            <label>name</label>
+            <input type="text"id="txtName"placeholder="enter name">
+        </p>
+<p>
+    <input type="button"value="submit"onclick="fnSubmit()">
+    <span id="demo"></span>
+</p>
+    </body>
+</html>

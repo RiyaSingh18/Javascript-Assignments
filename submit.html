@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script>
+      
+     
+   function fnSubmit(){
+    var NameRef=document.querySelector('#txtName');
+    var blockmsg = document.querySelector('#block');
+    var names=[];
+      
+       if(names.indexOf(user)==-1){
+       var user = NameRef.value;
+
+           names.push(user);
+           NameRef.value = '';
+           console.log(user)
+       }else{
+         alert('Already here');
+         document.getElementById('#block').innerHTML = 'already here';
+         return;
+         
+       }
+
+   }
+    
+
+</script>
+    </head>
+    <body>
+        <p>
+            <label>Name</label>
+            <input type="text" id="txtName">
+            <input type="button"value="Submit"id="btnSubmit" onclick="fnSubmit()">
+        </p>
+        <div id="block">
+
+        </div>
+    </body>
+</html>
